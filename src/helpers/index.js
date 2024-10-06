@@ -318,7 +318,11 @@ module.exports.generateRandomCode = () => {
 
 module.exports.sendCodeVerif = (code, mail, callbacks) => {
   let transporter = nodemailer.createTransport({
-    service: "gmail",
+  service: "gmail",
+  pool: true, // active le mode pool
+  host: 'smtp.gmail.com',
+  port: 465, // ou 587 si tu utilises TLS
+  secure: true, // utilise SSL
     auth: {
       user: process.env.GMAIL_USER,
       pass: process.env.GMAIL_PASS,
@@ -339,6 +343,10 @@ module.exports.sendCodeVerif = (code, mail, callbacks) => {
           to: mail,
           subject: "CODE DE VERIFICATION",
           html: data_,
+           headers: {
+    'X-Priority': '1', // Priorité haute
+    'X-MessageType': 'Transactional', // Indique que c'est un email transactionnel
+  }
         };
         transporter.sendMail(mainOption, (err, _data__) => {
           if (err) {
