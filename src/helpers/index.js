@@ -320,8 +320,8 @@ module.exports.sendCodeVerif = (code, mail, callbacks) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "tiemanirocket@gmail.com",
-      pass: "nvpwfjnwfdqxcrly",
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
     },
   });
 
@@ -335,7 +335,7 @@ module.exports.sendCodeVerif = (code, mail, callbacks) => {
         console.log(err);
       } else {
         let mainOption = {
-          from: "tiemanirocket@gmail.com",
+          from: process.env.GMAIL_USER,
           to: mail,
           subject: "CODE DE VERIFICATION",
           html: data_,
