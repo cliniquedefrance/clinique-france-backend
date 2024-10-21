@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const server = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -60,7 +61,9 @@ io.on("connection", (socket) => {
 
 require("dotenv").config();
 
-const allowedOrigins = ['https://clinique-france-frontend-one.vercel.app'];
+const allowedOrigins = ['https://clinique-france-frontend-one.vercel.app','http://localhost:3000'];
+
+server.use(morgan('combined'));
 
 server.use(
   cors({
@@ -136,4 +139,4 @@ server.use((err, req, res, next) => {
 startServer({ connectDB, server: app, startServer, PORT });
 
 
-export default app
+// export default app
