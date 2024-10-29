@@ -4,10 +4,11 @@ const { COOKIE_NAME } = require("./constants");
 exports.successHandler = (res, data, statusCode = 200) => {
     if(data?.access_token) res.cookie(COOKIE_NAME, data.access_token, {
         maxAge: env.EXPIRE_DATE,
-        httpOnly: process.env.NODE_ENV === 'production' | true,
-        secure: process.env.NODE_ENV === 'production' | true, 
-        sameSite: 'None'
+        httpOnly: true ,
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite:  process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
       });
+      console.log("res cookies", res.cookie)
     res.status(statusCode).json({ success: true, data });
 }
 
