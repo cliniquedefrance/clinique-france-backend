@@ -4,3 +4,5 @@ package-lock.json
 package-lock.json
 src/uploads/*
 functions
+yarn.lock
+start.bat
