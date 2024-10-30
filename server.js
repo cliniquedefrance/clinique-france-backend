@@ -33,6 +33,7 @@ const connectDB = require("./src/loaders/mongoose");
 const { startServer } = require("./src/helpers");
 const { verifyToken } = require("./src/routes/verifyToken");
 const { disconnectUser } = require("./src/routes/disconnectUser");
+const { OrdonnanceOphtaRouter } = require("./src/routes/ordonnance.route");
 
 const app = http.createServer(server, {
   cors: {
@@ -110,6 +111,7 @@ server.use("/appointments", appointmentRoutes);
 server.use("/notifications", notificationRoutes);
 server.post("/verifyToken", verifyToken);
 server.post("/disconnect", disconnectUser);
+server.use("/ordonnance/ophta", OrdonnanceOphtaRouter)
 server.get("/checkVersion", (req, res) => {
   res.send(new Date().toLocaleDateString());
 });
@@ -136,4 +138,4 @@ server.use((err, req, res, next) => {
 startServer({ connectDB, server: app, startServer, PORT });
 
 
- export default app
+ // export default app
