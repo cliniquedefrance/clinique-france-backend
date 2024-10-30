@@ -1,5 +1,4 @@
 const express = require("express");
-const morgan = require("morgan");
 const server = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
