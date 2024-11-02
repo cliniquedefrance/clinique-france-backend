@@ -8,7 +8,6 @@ exports.successHandler = (res, data, statusCode = 200) => {
         secure: process.env.NODE_ENV === 'production', 
         sameSite:  process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
       });
-      console.log("res cookies", res.cookie)
     res.status(statusCode).json({ success: true, data });
 }
 

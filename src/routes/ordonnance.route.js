@@ -3,6 +3,13 @@ const { ordonnanceOphtaController } = require('../database/controllers/ordonnanc
 
 const OrdonnanceOphtaRouter = express.Router();
 
+// Middleware de logging pour enregistrer les informations sur les requêtes
+OrdonnanceOphtaRouter.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}]\n`);
+    console.log("[Ordo Ophta] data ---\n", req.body);
+    next(); // Passe la main à la route suivante
+  });
+
 // Route pour créer une nouvelle ordonnance
 OrdonnanceOphtaRouter.post('/', ordonnanceOphtaController.createOrdonnance);
 

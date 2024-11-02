@@ -27,7 +27,10 @@ const ordonnanceOphtaSchema = new Schema({
   traitements: [{ type: String }], // Par exemple : ["Photochromique", "Anti Reflet"]
   verre: { type: String }, // Ex. "Double Foyer", "Simple Vision"
   matiere: { type: String }, // Ex. "Organique", "Polycarbonate"
-  port: { type: String } // Ex. "Constant", "Inconstant"
+  port: { type: String }, // Ex. "Constant", "Inconstant"
+  label: { type: String, default: "Ophtalmologie" },
+}, {
+    timestamps:true,
 });
 
 const OrdonnanceOphtaModel = mongoose.model(ORDONANCE_OPHTAMOLOGY, ordonnanceOphtaSchema);
