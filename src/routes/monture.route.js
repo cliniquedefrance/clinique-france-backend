@@ -18,8 +18,14 @@ MontureRouter.put('/:id', MontureController.update);
 // Route pour supprimer une monture par ID
 MontureRouter.delete('/:id', MontureController.delete);
 
-// Route pour toggler la disponibilité en stock d'une monture
-MontureRouter.put('/:id/toggle-stock', MontureController.toggleStock);
+// Route pour mettre à jour la quantité d'une monture
+MontureRouter.put('/:montureId/quantity',MontureController.updateQuantity);
+
+// Route pour diminuer la quantité d'une monture (par exemple, lors d'une vente)
+MontureRouter.post('/:montureId/decrease',MontureController.decreaseQuantity);
+
+// Route pour augmenter la quantité d'une monture (par exemple, lors d'un nouvel arrivage)
+MontureRouter.post('/:montureId/increase', MontureController.increaseQuantity);
 
 
 module.exports = MontureRouter;
