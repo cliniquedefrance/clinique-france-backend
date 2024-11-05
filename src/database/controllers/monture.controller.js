@@ -60,15 +60,44 @@ class MontureController {
     }
   }
 
-  // Toggler la disponibilité d'une monture
-async toggleStock(req, res) {
-    try {
-      const monture = await MontureService.toggleStock(req.params.id);
-      res.status(200).json(monture);
-    } catch (error) {
-      res.status(500).json({ message: 'Erreur lors du changement de la disponibilité', error });
-    }
+  // Contrôleur pour mettre à jour la quantité d'une monture
+async  updateQuantity(req, res) {
+  const { montureId } = req.params;
+  const { newQuantity } = req.body;
+
+  try {
+    const monture = await montureService.updateQuantity(montureId, newQuantity);
+    res.status(200).json(monture);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
+}
+
+// Contrôleur pour diminuer la quantité (par exemple lors d'une vente)
+async decreaseQuantity(req, res) {
+  const { montureId } = req.params;
+  const { amount } = req.body;
+
+  try {
+    const monture = await montureService.decreaseQuantity(montureId, amount);
+    res.status(200).json(monture);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+
+// Contrôleur pour augmenter la quantité (par exemple lors de la réception d'un nouvel arrivage)
+async  increaseQuantity(req, res) {
+  const { montureId } = req.params;
+  const { amount } = req.body;
+
+  try {
+    const monture = await MontureService.increaseQuantity(montureId, amount);
+    res.status(200).json(monture);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
   
 
 }
