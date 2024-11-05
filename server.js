@@ -34,6 +34,8 @@ const { startServer } = require("./src/helpers");
 const { verifyToken } = require("./src/routes/verifyToken");
 const { disconnectUser } = require("./src/routes/disconnectUser");
 const { OrdonnanceOphtaRouter } = require("./src/routes/ordonnance.route");
+const MontureRouter = require("./src/routes/monture.route");
+
 
 const app = http.createServer(server, {
   cors: {
@@ -112,6 +114,7 @@ server.use("/notifications", notificationRoutes);
 server.post("/verifyToken", verifyToken);
 server.post("/disconnect", disconnectUser);
 server.use("/ordonnance/ophta", OrdonnanceOphtaRouter)
+server.use("/montures", MontureRouter)
 server.get("/checkVersion", (req, res) => {
   res.send(new Date().toLocaleDateString());
 });
