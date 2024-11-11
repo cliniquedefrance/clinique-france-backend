@@ -9,6 +9,7 @@ module.exports.verifyToken = async (req, res) => {
     try {
         const result = await jwt.verify(req.cookies[COOKIE_NAME], process.env.jwt || env?.jwt)
         const user = req.query.module === "externe" ? await patientService.findOneByQuery({email: result?.username}) : await userService.findOneByQuery({email: result?.username})
+        result.theUser = user; // j'ajoute le user ici pour pouvoir l'inclure dans les ventes
         if(user){
             successHandler(res, result, 200)
             return;
