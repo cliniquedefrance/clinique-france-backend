@@ -24,7 +24,7 @@ async function creerVente(venteData) {
     for (let article of articles) {
       await MontureModel.findByIdAndUpdate(
         article.monture,
-        { $inc: { quantite: -article.quantite } },
+        { $inc: { quantity: -article.quantite } },
         { new: true }
       );
     }
