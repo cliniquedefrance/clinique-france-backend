@@ -39,6 +39,8 @@ const VenteRouter = require("./src/routes/vente.route");
 
 const BO_URL = process.env.BO_URL;
 
+console.log("lien du backoffice : ", BO_URL);
+
 
 const app = http.createServer(server, {
   cors: {
