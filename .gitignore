@@ -6,3 +6,4 @@ src/uploads/*
 functions
 yarn.lock
 start.bat
+scripts
