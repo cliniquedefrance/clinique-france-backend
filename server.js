@@ -38,6 +38,7 @@ const MontureRouter = require("./src/routes/monture.route");
 const VenteRouter = require("./src/routes/vente.route");
 
 const BO_URL = process.env.BO_URL;
+console.log("BO Link", BO_URL);
 
 
 const app = http.createServer(server, {
