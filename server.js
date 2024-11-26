@@ -37,6 +37,8 @@ const { OrdonnanceOphtaRouter } = require("./src/routes/ordonnance.route");
 const MontureRouter = require("./src/routes/monture.route");
 const VenteRouter = require("./src/routes/vente.route");
 
+const BO_URL = process.env.BO_URL;
+
 
 const app = http.createServer(server, {
   cors: {
@@ -64,7 +66,7 @@ io.on("connection", (socket) => {
 
 require("dotenv").config();
 
-const allowedOrigins = process.env.NODE_ENV === "production" ? ['https://clinique-france-frontend-one.vercel.app'] : ['http://localhost:3000',"*"] ;
+const allowedOrigins = process.env.NODE_ENV === "production" ? [BO_URL] : ['http://localhost:3000',"*"] ;
 
 server.use(
   cors({
