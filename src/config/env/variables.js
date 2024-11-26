@@ -1,5 +1,7 @@
 const isProd = process.env.IS_PROD === "true"? true : false;
 const DB_URL = isProd? process.env.PROD_DATABASE_URI : process.env.TEST_DATABASE_URI;
+console.log("is PROD : ", isProd);
+console.log("DB URL : ", DB_URL);
 
 
 module.exports.env = {
