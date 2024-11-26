@@ -37,7 +37,9 @@ const { OrdonnanceOphtaRouter } = require("./src/routes/ordonnance.route");
 const MontureRouter = require("./src/routes/monture.route");
 const VenteRouter = require("./src/routes/vente.route");
 
-const BO_URL = process.env.BO_URL;
+const isProd = process.env.IS_PROD === "true"? true : false;
+const BO_URL = isProd? process.env.BO_PROD_URL : process.env.BO_TEST_URL;
+
 console.log("BO Link", BO_URL);
 
 
