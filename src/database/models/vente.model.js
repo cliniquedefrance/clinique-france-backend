@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { ORDONANCE_OPHTAMOLOGY, PATIENT, MONTURE } = require('../../constants/entity');
+const { ORDONANCE_OPHTAMOLOGY, PATIENT, MONTURE,USER } = require('../../constants/entity');
 const Schema = mongoose.Schema;
 
 const VenteOphtaSchema = new Schema({
@@ -42,6 +42,11 @@ const VenteOphtaSchema = new Schema({
     default: function() {
       return this.montantPaye >= this.montantTotal ? 'payé' : this.montantPaye > 0 ? 'partiel' : 'impayé';
     }
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: USER,
+    required: true,
   },
   reductions: [
     {

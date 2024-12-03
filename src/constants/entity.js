@@ -17,3 +17,4 @@ module.exports.CONSIGNE = "Consigne"
 module.exports.ORDONANCE_OPHTAMOLOGY = "Ordo_ophta"
 module.exports.MONTURE = "Monture"
 module.exports.VENTE = "Vente"
+module.exports.CASH_OPERATION = 'CaisseOperation'
