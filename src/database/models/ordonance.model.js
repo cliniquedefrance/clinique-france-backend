@@ -7,7 +7,11 @@ const Schema = mongoose.Schema;
 const ordonnanceOphtaSchema = new Schema({
   patient: { type: Schema.Types.ObjectId, ref: PATIENT, required: true },
   date: { type: Date, required: true },
-
+  medecin : {
+    type: String,
+    require: false,
+    default: 'non précisé'
+  },
   oeilDroit: {
     SPH: { type: String },
     CYL: { type: String },
