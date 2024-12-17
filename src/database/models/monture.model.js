@@ -25,6 +25,12 @@ const MontureSchema = new mongoose.Schema({
     default: 1,  // Quantité par défaut à 1 s'il n'est pas spécifié
     min: 0       // La quantité ne peut pas être inférieure à 0
   },
+  genre:{
+    type: String,
+    enum: ["Homme", "Femme"],
+    required: false,
+    default:  "Homme",
+  }
   
 }, { timestamps: true });
 
