@@ -30,7 +30,13 @@ const MontureSchema = new mongoose.Schema({
     enum: ["Homme", "Femme"],
     required: false,
     default:  "Homme",
+  },
+  alert:{
+    type: Number,
+    required: false,
+    default: 5,
   }
+
   
 }, { timestamps: true });
 
@@ -38,6 +44,10 @@ const MontureSchema = new mongoose.Schema({
 // Définition de la propriété virtuelle "isInStock"
 MontureSchema.virtual('isInStock').get(function() {
   return this.quantity > 0;
+});
+
+MontureSchema.virtual('isInAlert').get(function() {
+  return this.quantity < this.alert;
 });
 
 // Permet d'inclure les propriétés virtuelles lors de la conversion du document en objet ou en JSON
